@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Users</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</title>
+<body>
+<script>
+  var ruta = "/me/" + "vatslav" + "/attack";
+  var ruta_shot = "/me/" + "vatslav" + "/shot";
+  $.ajax({
+       type : "PUT",
+       url : ruta,
+       data: { "name": "vatslav", "bullet" : 9, "name_enemy" : "Marshal"}
+  });
+
+  $.ajax({
+       type: "GET",
+       url: ruta 
+       }).done(function(data){
+         console.log(data);
+    });
+  var fecha = Date.now();
+  $.ajax({
+      type: "PUT",
+      url: ruta_shot,
+      data : {"name" : "vatslav", "bullet" : 8, "gun" : "venti", "timestamp_trigger" : fecha }
+     });
+</script>
+</html>
