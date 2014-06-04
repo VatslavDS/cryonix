@@ -7,9 +7,8 @@ function ContentHandler (db){
     this.displayMainPage = function(req, res, next) {
         "use strict";
 
-            return res.render('blog_template', {
-                title: 'Cryonix',
-                username: req.username
+            return res.render('index', {
+                title: 'Cryonix'
             });
     }
 

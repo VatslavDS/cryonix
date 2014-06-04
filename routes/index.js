@@ -53,9 +53,17 @@ module.exports = exports = function(app, db) {
       return res.render('users', user);
       });
     });
- 
+    //gerardo 
     app.put('/me/:username/attack', function(req, res, next){
-      console.log(req.body);
+      var bul = 0;
+      var users = db.collection("users");
+      users.findOne({"username" : req.params("username")}, function(err, user){
+        bul = user['bullets'] - 1 ;
+      }); 
+       users.insert(user, {safe : true}, function(err, records){
+          if(err) console.log("Error");
+          console.log("ok"); 
+      });
     });
     
     app.get('/me/:username/attack', function(req, res, next){
@@ -77,6 +85,14 @@ module.exports = exports = function(app, db) {
         return res.send(user);
       });
     });
+
+    app.post('/correo', function(req, res, next){
+      var correo = req.body
+      console.log(correo);
+     ////
+      return res.send("ok"); 
+    });
+
     // Error handling middleware
     app.use(ErrorHandler);
 }
