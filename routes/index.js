@@ -57,13 +57,13 @@ module.exports = exports = function(app, db) {
     app.put('/me/:username/attack', function(req, res, next){
       var bul = 0;
       var users = db.collection("users");
-      users.findOne({"username" : req.params("username")}, function(err, user){
-        bul = user['bullets'] - 1 ;
-      }); 
-       users.insert(user, {safe : true}, function(err, records){
-          if(err) console.log("Error");
-          console.log("ok"); 
-      });
+      users.findAndModify({"username" : req.params("username")}, [[]], {$inc : {"bullets" : -1}}, {}, function(err, object){
+	if(err){
+	    console.log(err);
+	}else{
+	console.log(object);
+      }
+     });
     });
     
     app.get('/me/:username/attack', function(req, res, next){
