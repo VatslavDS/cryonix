@@ -50,7 +50,7 @@ module.exports = exports = function(app, db) {
     "use strict";
       var users = db.collection("users"); 
       users.findOne({"username" : req.param("username") }, function(err, user){
-      return res.render('users', user);
+        return res.render('users', user);
       });
     });
     //gerardo 
