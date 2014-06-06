@@ -4,6 +4,7 @@ var express = require('express')
   , MongoClient = require('mongodb').MongoClient // Driver for connecting to MongoDB
   , routes = require('./routes'); // Routes for our application
 
+
 MongoClient.connect('mongodb://localhost:27017/cryonix', function(err, db) {
     "use strict";
     if(err) throw err;
@@ -26,6 +27,6 @@ MongoClient.connect('mongodb://localhost:27017/cryonix', function(err, db) {
   
     app.use(express.logger());
 
-    app.listen(3000);
-    console.log('Express server listening on port 3000');
+    app.listen(8080);
+    console.log('Express server listening on port 8080');
 });
