@@ -3,6 +3,7 @@ var express = require('express')
   , cons = require('consolidate') // Templating library adapter for Express
   , MongoClient = require('mongodb').MongoClient // Driver for connecting to MongoDB
   , routes = require('./routes'); // Routes for our application
+  var path = require('path');
 
 MongoClient.connect('mongodb://localhost:27017/cryonix', function(err, db) {
     "use strict";
@@ -12,6 +13,7 @@ MongoClient.connect('mongodb://localhost:27017/cryonix', function(err, db) {
     app.engine('html', cons.swig);
     app.set('view engine', 'html');
     app.set('views', __dirname + '/views');
+    app.use(express.static(path.join('public')));
 
     // Express middleware to populate 'req.cookies' so we can access cookies
     app.use(express.cookieParser());
