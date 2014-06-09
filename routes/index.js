@@ -57,7 +57,7 @@ module.exports = exports = function(app, db) {
     app.put('/me/:username/attack', function(req, res, next){
       var bul = 0;
       var users = db.collection("users");
-      users.findAndModify({"username" : req.params("username")}, [[]], {$inc : {"bullets" : -1}}, {}, function(err, object){
+      users.findAndModify({"username" : req.param("username")}, [[]], {$inc : {"bullets" : -1}}, {}, function(err, object){
 	if(err){
 	    console.log(err);
 	}else{
